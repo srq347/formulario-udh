@@ -33,6 +33,21 @@ document.getElementById('udhForm').addEventListener('submit', function(event) {
     console.log(data);
     alert("Datos guardados exitosamente");
 
+    fetch('http://localhost:3000/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+   
     // Aquí puedes agregar la lógica para enviar los datos a un backend o servicio de almacenamiento
     // Por ejemplo, usando fetch() para enviar los datos a una API
 });
